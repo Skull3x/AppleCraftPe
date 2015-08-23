@@ -1,0 +1,7 @@
+name: PVPTEAM
+main: 
+version: 1.0
+load: STARTUP
+api: 1.12.0
+author: Tigerza117
+description: ใช้ PvP ทีมโดยเข้ามาจะมีการสุ่มเข้าทีมโดยมีทั้งหมด 4 ทีม
