@@ -25,19 +25,32 @@ use pocketmine\command\Command;
 use pocketmine\item\Item;
 
 class MyPlugin extends PluginBase{
-	
-	const TEAM_RED = 0;
-	const TEAM_BLUE = 1;
-	const TEAM_BLUE = 2;
-	const TEAM_BLUE = 3;
 
     public function onEnable(){
         $this->getLogger()->info("pvpteam starting");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
     
+    public function TRED(PlayerJoinEvent $event){
+    	
+    }
+    
+    public function TBLUE(Player $event){
+    	
+    }
+    
+    public function TGREEN(Player $event){
+    	
+    }
+    
+    public function TYEELOW(Player $event){
+    	
+    }
+    
+    }
     public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
+		team = rand($TRED[0], $TBLUE[0], $TGREEN[0], $TYEELOW[0]);
     }
     
     public function onDisable(){
