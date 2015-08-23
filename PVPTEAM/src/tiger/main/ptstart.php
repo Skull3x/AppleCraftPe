@@ -25,31 +25,45 @@ use pocketmine\command\Command;
 use pocketmine\item\Item;
 
 class MyPlugin extends PluginBase{
+	
+    private $players = array();	
 
     public function onEnable(){
         $this->getLogger()->info("pvpteam starting");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
     
-    public function TRED(PlayerJoinEvent $event){
-    	
+    public function TRED(Player $player){
+    	$this->players[$player->getName()] = $player->getName();
+    	$display = TextFormat::RED . $player->getDisplayName();
+	$player->setNameTag($displayrank);
     }
     
-    public function TBLUE(Player $event){
-    	
+    public function TBLUE(Player $player){
+    	$this->players[$player->getName()] = $player->getName();
+    	$display = TextFormat::BLUE . $player->getDisplayName();
+	$player->setNameTag($displayrank);
     }
     
-    public function TGREEN(Player $event){
-    	
+    public function TGREEN(Player $player){
+    	$this->players[$player->getName()] = $player->getName();
+    	$display = TextFormat::GREEN . $player->getDisplayName();
+	$player->setNameTag($displayrank);
     }
     
-    public function TYEELOW(Player $event){
-    	
+    public function TYEELOW(Player $player){
+    	$this->players[$player->getName()] = $player->getName();
+    	$display = TextFormat::YEELOW . $player->getDisplayName();
+	$player->setNameTag($displayrank);
     }
     
     public function onJoin(PlayerJoinEvent $event){
-		$player = $event->getPlayer();
-		team = rand($TRED[0], $TBLUE[0], $TGREEN[0], $TYEELOW[0]);
+	$player = $event->getPlayer();
+	$this->teamrend($player);
+    }
+    
+    public function teamrend(){
+    	return rand($TRED[0], $TBLUE[0], $TGREEN[0], $TYEELOW[0]);
     }
     
     public function onDisable(){
