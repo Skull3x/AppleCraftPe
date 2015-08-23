@@ -61,6 +61,28 @@ class MyPlugin extends PluginBase{
 	$player->setNameTag($displayrank);
     }
     
+    public function onPlayerHurt(EntityDamageEvent $event) {
+       if ($event instanceof EntityDamageByEntityEvent) {
+            if ($event->getEntity() instanceof Player && $event->getDamager() instanceof Player) {
+                if ( isset($this->TRED[$event->getEntity()->getName()]) && isset($this->TRED[$event->getDamager()->getName()])) {
+                     $event->setCancelled(true);
+                }
+                else
+                if( isset($this->TBLUE[$event->getEntity()->getName()]) && isset($this->TBLUE[$event->getDamager()->getName()])) {
+                    $event->setCancelled(true);
+                }
+                else
+                if( isset($this->TGREEN[$event->getEntity()->getName()]) && isset($this->TGREEN[$event->getDamager()->getName()])) {
+                    $event->setCancelled(true);
+                }
+                else
+                if( isset($this->TYEELOW[$event->getEntity()->getName()]) && isset($this->TYEELOW[$event->getDamager()->getName()])) {
+                    $event->setCancelled(true);
+                }
+            }
+        }
+    }
+    
     public function onJoin(PlayerJoinEvent $event){
 	$player = $event->getPlayer();
 	$this->teamrend($player);
