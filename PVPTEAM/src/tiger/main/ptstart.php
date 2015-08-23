@@ -67,7 +67,7 @@ class MyPlugin extends PluginBase{
     }
     
     public function teamrend(){
-    	return rand($TRED[0], $TBLUE[0], $TGREEN[0], $TYEELOW[0]);
+    	return rand($this->TRED[0], $this->TBLUE[0], $this->TGREEN[0], $this->TYEELOW[0]);
     }
     
     public function onDisable(){
