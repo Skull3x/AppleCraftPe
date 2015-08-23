@@ -1,5 +1,5 @@
 name: PVPTEAM
-main: 
+main: tiger/main/ptstart
 version: 1.0
 load: STARTUP
 api: 1.12.0
