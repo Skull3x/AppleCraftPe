@@ -27,40 +27,46 @@ use pocketmine\item\Item;
 class MyPlugin extends PluginBase{
 	
     private $players = array();	
-
+    
     public function onEnable(){
         $this->getLogger()->info("pvpteam starting");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
-   
+    
+   //ป้องกัน Drop ของ
    public function onDropItem(PlayerDropItemEvent $event){
 	$event->setCancelled();
     }
     
+    //สีแดง
     public function TRED(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::RED . $player->getDisplayName();
 	$player->setNameTag($displayrank);
     }
     
+    //สีน้ำเงิน
     public function TBLUE(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::BLUE . $player->getDisplayName();
 	$player->setNameTag($displayrank);
     }
     
+    //สีเขียว
     public function TGREEN(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::GREEN . $player->getDisplayName();
 	$player->setNameTag($displayrank);
     }
     
+    //สีเหลือง
     public function TYEELOW(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::YEELOW . $player->getDisplayName();
 	$player->setNameTag($displayrank);
     }
     
+    //ตอนตีกันโดยจะห้ามตีทีมเดียวกันจะให้ตีทีมอื่นเท่านั้น
     public function onPlayerHurt(EntityDamageEvent $event) {
        if ($event instanceof EntityDamageByEntityEvent) {
             if ($event->getEntity() instanceof Player && $event->getDamager() instanceof Player) {
@@ -83,11 +89,13 @@ class MyPlugin extends PluginBase{
         }
     }
     
+    //ตอนเข้าเซิฟจะ set สีของชื่อ
     public function onJoin(PlayerJoinEvent $event){
 	$player = $event->getPlayer();
 	$this->teamrend($player);
     }
     
+    //สุ่มทีม
     public function teamrend(){
     	return rand($this->TRED[0], $this->TBLUE[0], $this->TGREEN[0], $this->TYEELOW[0]);
     }
