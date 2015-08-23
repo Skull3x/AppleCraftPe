@@ -43,6 +43,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::RED . $player->getDisplayName();
 	$player->setNameTag($displayrank);
+	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
     //สีน้ำเงิน
@@ -50,6 +51,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::BLUE . $player->getDisplayName();
 	$player->setNameTag($displayrank);
+	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
     //สีเขียว
@@ -57,6 +59,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::GREEN . $player->getDisplayName();
 	$player->setNameTag($displayrank);
+	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
     //สีเหลือง
@@ -64,6 +67,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::YEELOW . $player->getDisplayName();
 	$player->setNameTag($displayrank);
+	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
     //ตอนตีกันโดยจะห้ามตีทีมเดียวกันจะให้ตีทีมอื่นเท่านั้น
@@ -95,6 +99,19 @@ class MyPlugin extends PluginBase{
 	$this->teamrend($player);
     }
     
+    //ตอนเกิดใหม่
+    public function onRespawn(PlayerRespawnEvent $event){
+	$player = $event->getPlayer();	
+    }
+    
+    //ตอนออกเซิฟ
+    public function onQuitEvent(PlayerQuitEvent $event){
+	$player = $event->getPlayer();
+	if($player->onJoinEvent and isset($this->players[$player->getName()])){
+		unset($this->players[$player->getName()]);
+	}
+    }
+	
     //สุ่มทีม
     public function teamrend(){
     	return rand($this->TRED[0], $this->TBLUE[0], $this->TGREEN[0], $this->TYEELOW[0]);
