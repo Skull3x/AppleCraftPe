@@ -47,7 +47,6 @@ class MyPlugin extends PluginBase{
     	
     }
     
-    }
     public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
 		team = rand($TRED[0], $TBLUE[0], $TGREEN[0], $TYEELOW[0]);
