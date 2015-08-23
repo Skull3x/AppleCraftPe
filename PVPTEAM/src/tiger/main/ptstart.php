@@ -32,6 +32,10 @@ class MyPlugin extends PluginBase{
         $this->getLogger()->info("pvpteam starting");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
+   
+   public function onDropItem(PlayerDropItemEvent $event){
+	$event->setCancelled();
+    }
     
     public function TRED(Player $player){
     	$this->players[$player->getName()] = $player->getName();
