@@ -42,7 +42,7 @@ class MyPlugin extends PluginBase{
     public function TRED(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::RED . $player->getDisplayName();
-	$player->setNameTag($displayrank);
+	$player->setNameTag($display);
 	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
@@ -50,7 +50,7 @@ class MyPlugin extends PluginBase{
     public function TBLUE(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::BLUE . $player->getDisplayName();
-	$player->setNameTag($displayrank);
+	$player->setNameTag($display);
 	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
@@ -58,7 +58,7 @@ class MyPlugin extends PluginBase{
     public function TGREEN(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::GREEN . $player->getDisplayName();
-	$player->setNameTag($displayrank);
+	$player->setNameTag($display);
 	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
@@ -66,7 +66,7 @@ class MyPlugin extends PluginBase{
     public function TYEELOW(Player $player){
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::YEELOW . $player->getDisplayName();
-	$player->setNameTag($displayrank);
+	$player->setNameTag($display);
 	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
     }
     
