@@ -4,6 +4,8 @@ namespace tiger\main;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
+use pocketmine\block\Block;
+use pocketmine\event\block\BlockUpdateEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerQuitEvent;
@@ -115,6 +117,23 @@ class MyPlugin extends PluginBase{
     //สุ่มทีม
     public function teamrend(){
     	return rand($this->TRED[0], $this->TBLUE[0], $this->TGREEN[0], $this->TYEELOW[0]);
+    }
+    
+    //ป้องกันบล็อก update
+    public function onBlockUpdate(BlockUpdateEvent $event, Block $block){
+    	$item = $block->getId();
+                if($item === 8) {
+                	$event->setCancelled(true);
+                }
+                if($item === 9) {
+                	$event->setCancelled(true);
+                }
+                if($item === 10) {
+                	$event->setCancelled(true);
+                }				
+                if($item === 11) {
+                	$event->setCancelled(true);
+		}
     }
     
     public function onDisable(){
