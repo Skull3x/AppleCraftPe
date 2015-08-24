@@ -134,7 +134,7 @@ class MyPlugin extends PluginBase{
 	
     //สุ่มทีม
     public function teamrend(){
-    	return rand($this->TRED([0]), $this->TBLUE([0]), $this->TGREEN([0]), $this->TYEELOW([0]);
+    	return rand($this->TRED([0]), $this->TBLUE([0]), $this->TGREEN([0]), $this->TYEELOW([0]));
     }
     
     public function onBlockBreakEvent(BlockBreakEvent $event){
