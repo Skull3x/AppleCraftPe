@@ -105,19 +105,19 @@ class MyPlugin extends PluginBase{
     public function onRespawn(PlayerRespawnEvent $event){
        if ($event instanceof PlayerRespawnEvent) {
             if ($event->getPlayer() instanceof Player) {
-                if ( isset($this->TRED()[$event->getEntity()->getName()]) && isset($this->TRED())) {
+                if ( isset($this->TRED()[$event->getPlayer()->getName()]) && isset($this->TRED())) {
                     $event->setRespawnPosition($this->TRED()->poss());
                 }
                 else
-                if( isset($this->TBLUE()[$event->getEntity()->getName()]) && isset($this->TBLUE())) {
+                if( isset($this->TBLUE()[$event->getPlayer()->getName()]) && isset($this->TBLUE())) {
                     $event->setRespawnPosition(this->TBLUE()->poss());
                 }
                 else
-                if( isset($this->TGREEN()[$event->getEntity()->getName()]) && isset($this->TGREEN())) {
+                if( isset($this->TGREEN()[$event->getPlayer()->getName()]) && isset($this->TGREEN())) {
                     $event->setRespawnPosition(this->TGREEN()->poss());
                 }
                 else
-                if( isset($this->TYEELOW()[$event->getEntity()->getName()]) && isset($this->TYEELOW())) {
+                if( isset($this->TYEELOW()[$event->getPlayer()->getName()]) && isset($this->TYEELOW())) {
                     $event->setRespawnPosition(this->TYEELOW()->poss());
                 }
         }
