@@ -16,6 +16,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\player\PlayerItemHeldEvent;
 use pocketmine\scheduler\AsyncTask;
@@ -134,6 +135,13 @@ class MyPlugin extends PluginBase{
     //สุ่มทีม
     public function teamrend(){
     	return rand($this->TRED([0]), $this->TBLUE([0]), $this->TGREEN([0]), $this->TYEELOW([0]);
+    }
+    
+    public function onBlockBreakEvent(BlockBreakEvent $event){
+    	$player = $event->getPlayer();
+    	if($player->isSurvival() and isset($this->players[$player->getName()])){
+		$event->setCancelled(true);
+	}
     }
     
     //ป้องกันบล็อก update
