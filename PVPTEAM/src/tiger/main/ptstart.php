@@ -45,7 +45,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::RED . $player->getDisplayName();
 	$player->setNameTag($display);
-	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
+	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //สีน้ำเงิน
@@ -53,7 +53,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::BLUE . $player->getDisplayName();
 	$player->setNameTag($display);
-	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
+	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //สีเขียว
@@ -61,7 +61,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::GREEN . $player->getDisplayName();
 	$player->setNameTag($display);
-	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
+	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //สีเหลือง
@@ -69,26 +69,26 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::YEELOW . $player->getDisplayName();
 	$player->setNameTag($display);
-	$player->teleport($this->getOwner()->getServer()->getLevelByName("world")->getSafeSpawn(new Position(128, 10, 128)));
+	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //ตอนตีกันโดยจะห้ามตีทีมเดียวกันจะให้ตีทีมอื่นเท่านั้น
     public function onPlayerHurt(EntityDamageEvent $event) {
        if ($event instanceof EntityDamageByEntityEvent) {
             if ($event->getEntity() instanceof Player && $event->getDamager() instanceof Player) {
-                if ( isset($this->TRED[$event->getEntity()->getName()]) && isset($this->TRED[$event->getDamager()->getName()])) {
+                if ( isset($this->TRED()[$event->getEntity()->getName()]) && isset($this->TRED()[$event->getDamager()->getName()])) {
                      $event->setCancelled(true);
                 }
                 else
-                if( isset($this->TBLUE[$event->getEntity()->getName()]) && isset($this->TBLUE[$event->getDamager()->getName()])) {
+                if( isset($this->TBLUE()[$event->getEntity()->getName()]) && isset($this->TBLUE()[$event->getDamager()->getName()])) {
                     $event->setCancelled(true);
                 }
                 else
-                if( isset($this->TGREEN[$event->getEntity()->getName()]) && isset($this->TGREEN[$event->getDamager()->getName()])) {
+                if( isset($this->TGREEN()[$event->getEntity()->getName()]) && isset($this->TGREEN()[$event->getDamager()->getName()])) {
                     $event->setCancelled(true);
                 }
                 else
-                if( isset($this->TYEELOW[$event->getEntity()->getName()]) && isset($this->TYEELOW[$event->getDamager()->getName()])) {
+                if( isset($this->TYEELOW()[$event->getEntity()->getName()]) && isset($this->TYEELOW()[$event->getDamager()->getName()])) {
                     $event->setCancelled(true);
                 }
             }
@@ -103,11 +103,24 @@ class MyPlugin extends PluginBase{
     
     //ตอนเกิดใหม่
     public function onRespawn(PlayerRespawnEvent $event){
-	$player = $event->getPlayer();
-	if($player->onJoinEvent and isset($this->players[$player->getName()])){
-		unset($this->players[$player->getName()]);
-	}
-	$this->teamrend($player);
+       if ($event instanceof PlayerRespawnEvent) {
+            if ($event->getPlayer() instanceof Player) {
+                if ( isset($this->TRED()[$event->getEntity()->getName()]) && isset($this->TRED())) {
+                    $event->setRespawnPosition($this->TRED()->poss());
+                }
+                else
+                if( isset($this->TBLUE()[$event->getEntity()->getName()]) && isset($this->TBLUE())) {
+                    $event->setRespawnPosition(this->TBLUE()->poss());
+                }
+                else
+                if( isset($this->TGREEN()[$event->getEntity()->getName()]) && isset($this->TGREEN())) {
+                    $event->setRespawnPosition(this->TGREEN()->poss());
+                }
+                else
+                if( isset($this->TYEELOW()[$event->getEntity()->getName()]) && isset($this->TYEELOW())) {
+                    $event->setRespawnPosition(this->TYEELOW()->poss());
+                }
+        }
     }
     
     //ตอนออกเซิฟ
@@ -120,7 +133,7 @@ class MyPlugin extends PluginBase{
 	
     //สุ่มทีม
     public function teamrend(){
-    	return rand($this->TRED[0], $this->TBLUE[0], $this->TGREEN[0], $this->TYEELOW[0]);
+    	return rand($this->TRED([0]), $this->TBLUE([0]), $this->TGREEN([0]), $this->TYEELOW([0]);
     }
     
     //ป้องกันบล็อก update
