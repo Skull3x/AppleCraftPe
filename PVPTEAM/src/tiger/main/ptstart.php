@@ -45,7 +45,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::RED . $player->getDisplayName();
 	$player->setNameTag($display);
-	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
+	$poss = (new Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //สีน้ำเงิน
@@ -53,7 +53,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::BLUE . $player->getDisplayName();
 	$player->setNameTag($display);
-	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
+	$poss = (new Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //สีเขียว
@@ -61,7 +61,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::GREEN . $player->getDisplayName();
 	$player->setNameTag($display);
-	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
+	$poss = (new Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //สีเหลือง
@@ -69,7 +69,7 @@ class MyPlugin extends PluginBase{
     	$this->players[$player->getName()] = $player->getName();
     	$display = TextFormat::YEELOW . $player->getDisplayName();
 	$player->setNameTag($display);
-	$poss = new (Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
+	$poss = (new Position(128, 10, 128, $this->getServer()->getDefaultLevel()));
     }
     
     //ตอนตีกันโดยจะห้ามตีทีมเดียวกันจะให้ตีทีมอื่นเท่านั้น
