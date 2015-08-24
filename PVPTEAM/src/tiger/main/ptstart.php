@@ -103,7 +103,11 @@ class MyPlugin extends PluginBase{
     
     //ตอนเกิดใหม่
     public function onRespawn(PlayerRespawnEvent $event){
-	$player = $event->getPlayer();	
+	$player = $event->getPlayer();
+	if($player->onJoinEvent and isset($this->players[$player->getName()])){
+		unset($this->players[$player->getName()]);
+	}
+	$this->teamrend($player);
     }
     
     //ตอนออกเซิฟ
