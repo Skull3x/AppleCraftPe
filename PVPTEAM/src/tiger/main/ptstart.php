@@ -145,18 +145,18 @@ class MyPlugin extends PluginBase{
     }
     
     //ป้องกันบล็อก update
-    public function onBlockUpdate(BlockUpdateEvent $event, Block $block){
-    	$item = $block->getId();
-                if($item === 8) {
+    public function onBlockUpdate(BlockUpdateEvent $event){
+    	$id = $$event->getgetBlock()->getId();
+                if($id === 8) {
                 	$event->setCancelled(true);
                 }
-                if($item === 9) {
+                if($id === 9) {
                 	$event->setCancelled(true);
                 }
-                if($item === 10) {
+                if($id=== 10) {
                 	$event->setCancelled(true);
                 }				
-                if($item === 11) {
+                if($id === 11) {
                 	$event->setCancelled(true);
 		}
     }
