@@ -146,7 +146,7 @@ class MyPlugin extends PluginBase{
     
     //ป้องกันบล็อก update
     public function onBlockUpdate(BlockUpdateEvent $event){
-    	$id = $$event->getgetBlock()->getId();
+    	$id = $$event->getBlock()->getId();
                 if($id === 8) {
                 	$event->setCancelled(true);
                 }
@@ -165,4 +165,5 @@ class MyPlugin extends PluginBase{
         $this->getLogger()->info("pvpteam stoping");
     }
     
+}
 }
